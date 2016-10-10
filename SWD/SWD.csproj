@@ -59,6 +59,7 @@
       <DependentUpon>ImportWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\DataTableService.cs" />
+    <Compile Include="Services\ValidationService.cs" />
     <Page Include="Import\ImportWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
