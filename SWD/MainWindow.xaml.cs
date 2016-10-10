@@ -37,7 +37,10 @@ namespace SWD
 
 				bool firstRowIsHeader = true;
                 Model.Table mainTable = DataTableService.GetTableFromFile(openFileDialog.FileName, firstRowIsHeader);
-                mainDataGrid = DataTableService.InsertDataToGrid(mainTable, mainDataGrid);
+                if (ValidationService.TableIsValid(mainTable))
+                    mainDataGrid = DataTableService.InsertDataToGrid(mainTable, mainDataGrid);
+                else MessageBox.Show("W pliku występują braki danych!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                
             }
         }
     }
