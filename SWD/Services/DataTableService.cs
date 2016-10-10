@@ -12,14 +12,14 @@ namespace SWD.Services
 {
     public static class DataTableService
     {
-        public static Model.Table GetTableFromFile(string filepath, bool firstRowIsHeader)
+        public static Model.Table GetTableFromFile(string filepath, bool firstRowIsHeader, char separator)
         {
             var lines = File.ReadAllLines(filepath);
 
             var linesList = lines.Where(x => x.StartsWith("#") == false).ToList();            
 
             var data = (from l in linesList.Skip(0)
-                        let split = l.Split(';')
+                        let split = l.Split(separator)
                         select new Row(split)).ToList();
 
             Model.Table table = new Table(data, firstRowIsHeader);

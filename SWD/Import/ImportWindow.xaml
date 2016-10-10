@@ -1,0 +1,36 @@
+﻿<Window x:Class="SWD.Import.ImportWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SWD.Import"
+        mc:Ignorable="d"
+        Title="ImportWindow" Height="170" Width="170">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>        
+        <Label Grid.Row="0" FontWeight="Bold">Separator:</Label>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="20" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="50" />
+            </Grid.ColumnDefinitions>
+            <RadioButton Name="rbTabulator" Grid.Column="0" Grid.Row="0" GroupName="groupSeparator" Content="Tabulator" IsChecked="True" />
+            <RadioButton Name="rbComma" Grid.Column="0" Grid.Row="1" GroupName="groupSeparator" Content="Przecinek"/>
+            <RadioButton Name="rbSemicolon" Grid.Column="0" Grid.Row="2" GroupName="groupSeparator" Content="Średnik"/>
+            <RadioButton Name="rbCustom" Grid.Column="0" Grid.Row="3" GroupName="groupSeparator" Content="Niestandardowy"/>
+            <TextBox Name="textBoxCustomSeparator" Grid.Column="1" Grid.Row="3" Margin="3,1"></TextBox>
+        </Grid>
+        <Button Name="buttonImportuj" Grid.Row="2" Content="Importuj" Click="buttonImportuj_Click"></Button>        
+        
+    </Grid>
+</Window>
