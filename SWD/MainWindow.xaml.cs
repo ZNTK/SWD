@@ -15,6 +15,7 @@ using System.Windows.Shapes;
 using SWD.Model;
 using SWD.Services;
 using Microsoft.Win32;
+using SWD.Import;
 
 namespace SWD
 {
@@ -30,13 +31,10 @@ namespace SWD
 
         private void buttonImport_Click(object sender, RoutedEventArgs e)
         {
-            OpenFileDialog openFileDialog = new OpenFileDialog();
-            if(openFileDialog.ShowDialog() == true)
+            ImportWindow importWindow = new ImportWindow();
+            if (importWindow.ShowDialog() == false)
             {
-                textBoxImport.Text = openFileDialog.FileName;
-
-                Model.Table mainTable = DataTableService.GetTableFromFile(openFileDialog.FileName);
-                mainDataGrid = DataTableService.InsertDataToGrid(mainTable, mainDataGrid);
+                mainDataGrid = DataTableService.InsertDataToGrid(importWindow.mainTable, mainDataGrid);
             }
         }
     }
