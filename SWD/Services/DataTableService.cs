@@ -12,7 +12,7 @@ namespace SWD.Services
 {
     public static class DataTableService
     {
-        public static Model.Table GetTableFromFile(string filepath)
+        public static Model.Table GetTableFromFile(string filepath, bool firstRowIsHeader)
         {
             var lines = File.ReadAllLines(filepath);
 
@@ -22,7 +22,7 @@ namespace SWD.Services
                         let split = l.Split(';')
                         select new Row(split)).ToList();
 
-            Model.Table table = new Model.Table(data);
+            Model.Table table = new Table(data, firstRowIsHeader);
 
             return table;
         }

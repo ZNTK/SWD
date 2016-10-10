@@ -35,7 +35,8 @@ namespace SWD
             {
                 textBoxImport.Text = openFileDialog.FileName;
 
-                Model.Table mainTable = DataTableService.GetTableFromFile(openFileDialog.FileName);
+				bool firstRowIsHeader = true;
+                Model.Table mainTable = DataTableService.GetTableFromFile(openFileDialog.FileName, firstRowIsHeader);
                 mainDataGrid = DataTableService.InsertDataToGrid(mainTable, mainDataGrid);
             }
         }
