@@ -34,15 +34,12 @@ namespace SWD
             ImportWindow importWindow = new ImportWindow();
             if (importWindow.ShowDialog() == false)
             {
-				mainDataGrid = DataTableService.InsertDataToGrid(importWindow.mainTable, mainDataGrid);
-                textBoxImport.Text = openFileDialog.FileName;
-
-				bool firstRowIsHeader = true;
-                Model.Table mainTable = DataTableService.GetTableFromFile(openFileDialog.FileName, firstRowIsHeader);
-                if (ValidationService.TableIsValid(mainTable))
-                    mainDataGrid = DataTableService.InsertDataToGrid(mainTable, mainDataGrid);
-                else MessageBox.Show("W pliku występują braki danych!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
-                
+                if (importWindow.dataWasImported)
+                {
+                    if (ValidationService.TableIsValid(importWindow.mainTable))
+                        mainDataGrid = DataTableService.InsertDataToGrid(importWindow.mainTable, mainDataGrid);
+                    else MessageBox.Show("W pliku występują braki danych!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
+                }                
             }
         }
     }

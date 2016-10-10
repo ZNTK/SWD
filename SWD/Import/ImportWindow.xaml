@@ -5,15 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SWD.Import"
         mc:Ignorable="d"
-        Title="ImportWindow" Height="170" Width="170">
+        Title="ImportWindow" Height="200" Width="170">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="20" />
-        </Grid.RowDefinitions>        
-        <Label Grid.Row="0" FontWeight="Bold">Separator:</Label>
-        <Grid Grid.Row="1">
+        </Grid.RowDefinitions>
+        <CheckBox Name="checkBoxFirstRowIsHeader" Grid.Row="0">
+            <StackPanel>
+                <TextBlock>Pierwszy rząd zawiera</TextBlock>
+                <TextBlock>nazwy kolumn.</TextBlock>
+            </StackPanel></CheckBox>
+        <Label Grid.Row="1" FontWeight="Bold">Separator:</Label>
+        <Grid Grid.Row="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="20" />
                 <RowDefinition Height="20" />
@@ -30,7 +36,6 @@
             <RadioButton Name="rbCustom" Grid.Column="0" Grid.Row="3" GroupName="groupSeparator" Content="Niestandardowy"/>
             <TextBox Name="textBoxCustomSeparator" Grid.Column="1" Grid.Row="3" Margin="3,1"></TextBox>
         </Grid>
-        <Button Name="buttonImportuj" Grid.Row="2" Content="Importuj" Click="buttonImportuj_Click"></Button>        
-        
+        <Button Name="buttonImportuj" Grid.Row="3" Content="Importuj" Click="buttonImportuj_Click"></Button>
     </Grid>
 </Window>

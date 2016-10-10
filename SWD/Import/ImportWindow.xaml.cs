@@ -21,7 +21,8 @@ namespace SWD.Import
     /// </summary>
     public partial class ImportWindow : Window
     {
-        public Model.Table mainTable;        
+        public Model.Table mainTable;
+        public bool dataWasImported = false;   
         public ImportWindow()
         {
             InitializeComponent();
@@ -44,7 +45,9 @@ namespace SWD.Import
                 if (openFileDialog.ShowDialog() == true)
                 {
                     MainWindow mainWindow = new MainWindow();
-                    mainTable = DataTableService.GetTableFromFile(openFileDialog.FileName,separator);                                  
+                    bool firstRowIsHeader = checkBoxFirstRowIsHeader.IsChecked == true ? true : false;
+                    mainTable = DataTableService.GetTableFromFile(openFileDialog.FileName, firstRowIsHeader, separator);
+                    if (mainTable != null) dataWasImported = true;                                  
                 }
             }
             this.Close();
