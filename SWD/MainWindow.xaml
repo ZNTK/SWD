@@ -16,7 +16,7 @@
         </Grid.ColumnDefinitions>
 
         <Button x:Name="button" Content="Import" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Grid.Row="0"/>
-        <DataGrid AutoGenerateColumns="True" Grid.Row="1"
+        <DataGrid AutoGenerateColumns="False" Grid.Row="1"
                   ItemsSource="{Binding}"
                   Name="mainDataGrid" />
        

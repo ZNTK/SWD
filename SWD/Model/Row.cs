@@ -19,6 +19,10 @@ namespace SWD.Model
                 });
             }
         }
+        public Row()
+        {
+            Cells = new List<Cell>();
+        }
         public List<Cell> Cells { get; set; }
     }
 }
