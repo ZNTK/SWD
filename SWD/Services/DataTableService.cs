@@ -16,7 +16,9 @@ namespace SWD.Services
         {
             var lines = File.ReadAllLines(filepath);
 
-            var data = (from l in lines.Skip(0)
+            var linesList = lines.Where(x => x.StartsWith("#") == false).ToList();            
+
+            var data = (from l in linesList.Skip(0)
                         let split = l.Split(';')
                         select new Row(split)).ToList();
 

@@ -15,11 +15,13 @@
             <ColumnDefinition Width="Auto" />
         </Grid.ColumnDefinitions>
 
-        <Button x:Name="button" Content="Import" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Grid.Row="0"/>
+        <Button x:Name="buttonImport" Content="Import" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Grid.Row="0" Click="buttonImport_Click"/>
+        <TextBox x:Name="textBoxImport" Grid.Row="0" HorizontalAlignment="Left" Height="23" Margin="100,-2,-429,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="407"/>
         <DataGrid AutoGenerateColumns="False" Grid.Row="1"
                   ItemsSource="{Binding}"
                   Name="mainDataGrid" />
-       
+        
+
 
     </Grid>
 </Window>

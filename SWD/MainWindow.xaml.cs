@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using SWD.Model;
 using SWD.Services;
+using Microsoft.Win32;
 
 namespace SWD
 {
@@ -25,15 +26,18 @@ namespace SWD
         public MainWindow()
         {
             InitializeComponent();
-
-            string filePath = @"C:\Users\Robert\Desktop\test.txt";
-            bool firstRowIsHeader;
-
-
-            Model.Table mainTable = DataTableService.GetTableFromFile(filePath);
-            mainDataGrid = DataTableService.InsertDataToGrid(mainTable, mainDataGrid);
-
         }
 
+        private void buttonImport_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            if(openFileDialog.ShowDialog() == true)
+            {
+                textBoxImport.Text = openFileDialog.FileName;
+
+                Model.Table mainTable = DataTableService.GetTableFromFile(openFileDialog.FileName);
+                mainDataGrid = DataTableService.InsertDataToGrid(mainTable, mainDataGrid);
+            }
+        }
     }
 }
