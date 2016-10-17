@@ -55,9 +55,10 @@ namespace SWD
             {
                 mainDataGrid.ItemsSource = null;
                 mainDataGrid.Items.Refresh();
-                for(int i = 0; i < mainDataGrid.Columns.Count; i++)
+                int columnsCount = mainDataGrid.Columns.Count;
+                for (int i = 0; i < columnsCount; i++)
                 {
-                    mainDataGrid.Columns.RemoveAt(i);
+                    mainDataGrid.Columns.RemoveAt(0);
                 }                
                 mainDataGrid = DataTableService.InsertDataToGrid(convertToNumWindow.mainTable, mainDataGrid);
                 

@@ -52,7 +52,7 @@ namespace SWD.ConvertToNum
                     cell.Cells.Add(new Model.Cell("cos"));
                 }
             }
-
+            this.Close();
         }
     }
 }
