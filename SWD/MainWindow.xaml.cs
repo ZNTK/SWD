@@ -16,6 +16,7 @@ using SWD.Model;
 using SWD.Services;
 using Microsoft.Win32;
 using SWD.Import;
+using SWD.ConvertToNum;
 
 namespace SWD
 {
@@ -24,6 +25,7 @@ namespace SWD
     /// </summary>
     public partial class MainWindow : Window
     {
+        public Model.Table mainTable;
         public MainWindow()
         {
             InitializeComponent();
@@ -37,10 +39,29 @@ namespace SWD
                 if (importWindow.dataWasImported)
                 {
                     if (ValidationService.TableIsValid(importWindow.mainTable))
+                    {
                         mainDataGrid = DataTableService.InsertDataToGrid(importWindow.mainTable, mainDataGrid);
+                        mainTable = importWindow.mainTable;
+                    }
                     else MessageBox.Show("W pliku występują braki danych!", "Błąd", MessageBoxButton.OK, MessageBoxImage.Error);
                 }                
             }
+        }
+
+        private void buttonConvertToNum_Click(object sender, RoutedEventArgs e)
+        {
+            ConvertToNumWindow convertToNumWindow = new ConvertToNumWindow(mainTable);
+            if (convertToNumWindow.ShowDialog() == false)
+            {
+                mainDataGrid.ItemsSource = null;
+                mainDataGrid.Items.Refresh();
+                for(int i = 0; i < mainDataGrid.Columns.Count; i++)
+                {
+                    mainDataGrid.Columns.RemoveAt(i);
+                }                
+                mainDataGrid = DataTableService.InsertDataToGrid(convertToNumWindow.mainTable, mainDataGrid);
+                
+            }            
         }
     }
 }

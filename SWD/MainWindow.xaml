@@ -12,11 +12,21 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="auto" />            
         </Grid.ColumnDefinitions>
-
-        <Button x:Name="buttonImport" Content="Import" HorizontalAlignment="Left"  VerticalAlignment="Top" Width="75" Grid.Row="0" Click="buttonImport_Click"/>
-        <TextBox x:Name="textBoxImport" Grid.Row="0" HorizontalAlignment="Left" Height="23" Margin="100,-2,-429,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="407"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="50" />
+            </Grid.ColumnDefinitions>
+        
+        <Button x:Name="buttonImport" Content="Import" Grid.Column="0" Grid.Row="0" Click="buttonImport_Click"/>
+        <Button x:Name="buttonConvertToNum" Content="Convert" Grid.Row="0" Grid.Column="1" Click="buttonConvertToNum_Click"/>
+        <Button Content="Robo1" Grid.Row="0" Grid.Column="2"/>
+        <Button Content="Robo2" Grid.Row="0" Grid.Column="3"/>
+        </Grid>
         <DataGrid AutoGenerateColumns="False" Grid.Row="1"
                   ItemsSource="{Binding}"
                   Name="mainDataGrid" />

@@ -1,0 +1,39 @@
+﻿<Window x:Class="SWD.ConvertToNum.ConvertToNumWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SWD.ConvertToNum"
+        mc:Ignorable="d"
+        Title="ConvertToNumWindow" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="30" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="130" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="0" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">Kolejność:</Label>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="25" />
+                </Grid.RowDefinitions>
+                <RadioButton Name="rbAlfabetyczna" Grid.Row="0" GroupName="groupKolejnosc" Content="alfabetyczna" IsChecked="True" />
+                <RadioButton Name="rbWystąpienia" Grid.Row="1" GroupName="groupKolejnosc" Content="wystąpienia"/>
+            </Grid>
+        </Grid>
+        <Label Grid.Row="1" HorizontalContentAlignment="Center">Kolumna</Label>
+        <ComboBox Name="comboBoxColumn" Grid.Row="2" HorizontalContentAlignment="Center" ItemsSource="{Binding}">
+        </ComboBox>
+        <Button Grid.Row="3" Name="buttonZamien" Content="Zmień" Click="buttonZamien_Click"></Button>
+    </Grid>
+</Window>

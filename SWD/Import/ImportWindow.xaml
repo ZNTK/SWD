@@ -13,7 +13,7 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
-        <CheckBox Name="checkBoxFirstRowIsHeader" Grid.Row="0">
+        <CheckBox Name="checkBoxFirstRowIsHeader" Grid.Row="0"  IsChecked="True">
             <StackPanel>
                 <TextBlock>Pierwszy rząd zawiera</TextBlock>
                 <TextBlock>nazwy kolumn.</TextBlock>
@@ -30,9 +30,9 @@
                 <ColumnDefinition Width="Auto" />
                 <ColumnDefinition Width="50" />
             </Grid.ColumnDefinitions>
-            <RadioButton Name="rbTabulator" Grid.Column="0" Grid.Row="0" GroupName="groupSeparator" Content="Tabulator" IsChecked="True" />
+            <RadioButton Name="rbTabulator" Grid.Column="0" Grid.Row="0" GroupName="groupSeparator" Content="Tabulator" />
             <RadioButton Name="rbComma" Grid.Column="0" Grid.Row="1" GroupName="groupSeparator" Content="Przecinek"/>
-            <RadioButton Name="rbSemicolon" Grid.Column="0" Grid.Row="2" GroupName="groupSeparator" Content="Średnik"/>
+            <RadioButton Name="rbSemicolon" Grid.Column="0" Grid.Row="2" GroupName="groupSeparator" Content="Średnik"  IsChecked="True"/>
             <RadioButton Name="rbCustom" Grid.Column="0" Grid.Row="3" GroupName="groupSeparator" Content="Niestandardowy"/>
             <TextBox Name="textBoxCustomSeparator" Grid.Column="1" Grid.Row="3" Margin="3,1"></TextBox>
         </Grid>
