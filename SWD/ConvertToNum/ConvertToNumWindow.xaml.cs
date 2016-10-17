@@ -20,6 +20,7 @@ namespace SWD.ConvertToNum
     public partial class ConvertToNumWindow : Window
     {
         public Model.Table mainTable;
+        public bool result = false;
         public ConvertToNumWindow(Model.Table table)
         {
             InitializeComponent();
@@ -37,21 +38,31 @@ namespace SWD.ConvertToNum
         {
             var comboboxSelectedIndex = comboBoxColumn.SelectedIndex;
             List<string> stringColumn = new List<string>();
-            foreach (var cell in mainTable.Rows[comboboxSelectedIndex].Cells)
-            {
-                stringColumn.Add(cell.Value);
+            var klasyZWartosciami = new List<Tuple<string, int>>();
+            foreach (var row in mainTable.Rows)
+            {                
+                stringColumn.Add(row.Cells[comboboxSelectedIndex].Value);
             }
-
-            if(rbAlfabetyczna.IsChecked == true)
+                                       
+            stringColumn = stringColumn.Distinct().ToList();
+            if (rbAlfabetyczna.IsChecked == true)
             {
-                //var sortedTable = mainTable.Rows.OrderBy(x => x.Cells[comboboxSelectedIndex].Value);
                 stringColumn.Sort();
-                mainTable.Headers.Cells.Add(new Model.Cell(comboBoxColumn.SelectedItem + "_NumValues"));
-                foreach(var cell in mainTable.Rows)
-                {
-                    cell.Cells.Add(new Model.Cell("cos"));
-                }
             }
+            int i = 0;
+            foreach (var row in stringColumn)
+            {
+                klasyZWartosciami.Add(Tuple.Create(row, i));
+                i++;
+            }
+                           
+            mainTable.Headers.Cells.Add(new Model.Cell(comboBoxColumn.SelectedItem + "_NumValues"));
+            foreach (var row in mainTable.Rows)
+            {
+                var nr = klasyZWartosciami.Where(x => x.Item1 == row.Cells[comboboxSelectedIndex].Value).Select(x => x.Item2).FirstOrDefault();
+                row.Cells.Add(new Model.Cell(nr.ToString()));
+            }
+            result = true;
             this.Close();
         }
     }

@@ -53,15 +53,17 @@ namespace SWD
             ConvertToNumWindow convertToNumWindow = new ConvertToNumWindow(mainTable);
             if (convertToNumWindow.ShowDialog() == false)
             {
-                mainDataGrid.ItemsSource = null;
-                mainDataGrid.Items.Refresh();
-                int columnsCount = mainDataGrid.Columns.Count;
-                for (int i = 0; i < columnsCount; i++)
+                if (convertToNumWindow.result)
                 {
-                    mainDataGrid.Columns.RemoveAt(0);
-                }                
-                mainDataGrid = DataTableService.InsertDataToGrid(convertToNumWindow.mainTable, mainDataGrid);
-                
+                    mainDataGrid.ItemsSource = null;
+                    mainDataGrid.Items.Refresh();
+                    int columnsCount = mainDataGrid.Columns.Count;
+                    for (int i = 0; i < columnsCount; i++)
+                    {
+                        mainDataGrid.Columns.RemoveAt(0);
+                    }
+                    mainDataGrid = DataTableService.InsertDataToGrid(convertToNumWindow.mainTable, mainDataGrid);
+                }
             }            
         }
     }
