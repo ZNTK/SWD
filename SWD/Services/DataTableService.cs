@@ -46,5 +46,29 @@ namespace SWD.Services
             return dataGrid;
         }
 
+        public static List<string> GetColumFromTableAsList(Model.Table table,int columnNumber)
+        {
+            List<string> columnList = new List<string>();
+            foreach (var row in table.Rows)
+            {
+                columnList.Add(row.Cells[columnNumber].Value);
+            }
+            return columnList;
+        }
+
+        public static List<decimal>  ConvertStingListToDecimalList(List<string> list, string separator)
+        {
+            List<decimal> decimalList = new List<decimal>();
+            foreach (var item in list)
+            {
+                string temp = item;
+                if (item.StartsWith(separator))
+                {
+                    temp = "0" + item;
+                }
+                decimalList.Add(Convert.ToDecimal(temp.Replace(separator.ToCharArray()[0], '.')));
+            }
+            return decimalList;
+        }
     }
 }

@@ -37,12 +37,9 @@ namespace SWD.ConvertToNum
         private void buttonZamien_Click(object sender, RoutedEventArgs e)
         {
             var comboboxSelectedIndex = comboBoxColumn.SelectedIndex;
-            List<string> stringColumn = new List<string>();
+            List<string> stringColumn = Services.DataTableService.GetColumFromTableAsList(mainTable, comboboxSelectedIndex);
+
             var klasyZWartosciami = new List<Tuple<string, int>>();
-            foreach (var row in mainTable.Rows)
-            {                
-                stringColumn.Add(row.Cells[comboboxSelectedIndex].Value);
-            }
                                        
             stringColumn = stringColumn.Distinct().ToList();
             if (rbAlfabetyczna.IsChecked == true)
