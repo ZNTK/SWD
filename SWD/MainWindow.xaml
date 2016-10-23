@@ -6,7 +6,8 @@
         xmlns:local="clr-namespace:SWD"
         mc:Ignorable="d"
         Title="MainWindow" Height="350" Width="525">
-    <Grid>
+    <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+        <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
             <RowDefinition Height="Auto" />
@@ -16,22 +17,24 @@
         </Grid.ColumnDefinitions>
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
-                <ColumnDefinition Width="50" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="60" />
             </Grid.ColumnDefinitions>
         
         <Button x:Name="buttonImport" Content="Import" Grid.Column="0" Grid.Row="0" Click="buttonImport_Click"/>
         <Button x:Name="buttonConvertToNum" Content="Convert" Grid.Row="0" Grid.Column="1" Click="buttonConvertToNum_Click"/>
-        <Button Content="Robo1" Grid.Row="0" Grid.Column="2"/>
+        <Button  x:Name="buttonDiscretize" Content="Discretize" Grid.Row="0" Grid.Column="2" Click="buttonDiscretize_Click"/>
         <Button Content="Robo2" Grid.Row="0" Grid.Column="3"/>
         </Grid>
+       
         <DataGrid AutoGenerateColumns="False" Grid.Row="1"
                   ItemsSource="{Binding}"
                   Name="mainDataGrid" />
-        
+       
 
 
     </Grid>
+    </ScrollViewer>
 </Window>
