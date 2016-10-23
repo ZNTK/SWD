@@ -58,12 +58,21 @@
     <Compile Include="ConvertToNum\ConvertToNumWindow.xaml.cs">
       <DependentUpon>ConvertToNumWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Discretization\DiscretizationWindow.xaml.cs">
+      <DependentUpon>DiscretizationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Discretization\Models\Section.cs" />
     <Compile Include="Import\ImportWindow.xaml.cs">
       <DependentUpon>ImportWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\DataTableService.cs" />
+    <Compile Include="Services\DiscretizationService.cs" />
     <Compile Include="Services\ValidationService.cs" />
     <Page Include="ConvertToNum\ConvertToNumWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Discretization\DiscretizationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -114,6 +123,7 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

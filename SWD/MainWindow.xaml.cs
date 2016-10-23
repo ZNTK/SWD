@@ -17,6 +17,7 @@ using SWD.Services;
 using Microsoft.Win32;
 using SWD.Import;
 using SWD.ConvertToNum;
+using SWD.Discretization;
 
 namespace SWD
 {
@@ -55,16 +56,30 @@ namespace SWD
             {
                 if (convertToNumWindow.result)
                 {
-                    mainDataGrid.ItemsSource = null;
-                    mainDataGrid.Items.Refresh();
-                    int columnsCount = mainDataGrid.Columns.Count;
-                    for (int i = 0; i < columnsCount; i++)
-                    {
-                        mainDataGrid.Columns.RemoveAt(0);
-                    }
+                    ClearMainDataGrid();
                     mainDataGrid = DataTableService.InsertDataToGrid(convertToNumWindow.mainTable, mainDataGrid);
                 }
             }            
+        }
+
+        private void buttonDiscretize_Click(object sender, RoutedEventArgs e)
+        {
+            DiscretizationWindow discretizationWindow = new DiscretizationWindow(mainTable);
+            discretizationWindow.ShowDialog();
+
+            ClearMainDataGrid();
+            mainDataGrid = DataTableService.InsertDataToGrid(discretizationWindow.mainTable, mainDataGrid);
+        }
+
+        private void ClearMainDataGrid()
+        {
+            mainDataGrid.ItemsSource = null;
+            mainDataGrid.Items.Refresh();
+            int columnsCount = mainDataGrid.Columns.Count;
+            for (int i = 0; i < columnsCount; i++)
+            {
+                mainDataGrid.Columns.RemoveAt(0);
+            }
         }
     }
 }
