@@ -56,9 +56,9 @@ namespace SWD.Services
             return columnList;
         }
 
-        public static List<decimal>  ConvertStingListToDecimalList(List<string> list, string separator)
+        public static List<double>  ConvertStingListToDoubleList(List<string> list, string separator)
         {
-            List<decimal> decimalList = new List<decimal>();
+            List<double> doubleList = new List<double>();
             foreach (var item in list)
             {
                 string temp = item;
@@ -66,9 +66,19 @@ namespace SWD.Services
                 {
                     temp = "0" + item;
                 }
-                decimalList.Add(Convert.ToDecimal(temp.Replace(separator.ToCharArray()[0], '.')));
+                doubleList.Add(Convert.ToDouble(temp.Replace(separator.ToCharArray()[0], '.')));
             }
-            return decimalList;
+            return doubleList;
+        }
+
+        public static List<string> GetColumnHeadersAsList(Model.Table table)
+        {
+            List<string> stringTable = new List<string>();
+            foreach (var cell in table.Headers.Cells)
+            {
+                stringTable.Add(cell.Value);
+            }
+            return stringTable;
         }
     }
 }

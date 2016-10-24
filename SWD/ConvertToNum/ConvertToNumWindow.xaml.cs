@@ -24,14 +24,9 @@ namespace SWD.ConvertToNum
         public ConvertToNumWindow(Model.Table table)
         {
             InitializeComponent();
-            List<string> stringTable = new List<string>();
             mainTable = table;
-            foreach(var cell in table.Headers.Cells)
-            {
-                stringTable.Add(cell.Value);
-            }
 
-            comboBoxColumn.ItemsSource = stringTable;
+            comboBoxColumn.ItemsSource = Services.DataTableService.GetColumnHeadersAsList(table);
         }
 
         private void buttonZamien_Click(object sender, RoutedEventArgs e)

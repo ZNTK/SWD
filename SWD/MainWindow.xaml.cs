@@ -18,6 +18,7 @@ using Microsoft.Win32;
 using SWD.Import;
 using SWD.ConvertToNum;
 using SWD.Discretization;
+using SWD.Charts;
 
 namespace SWD
 {
@@ -80,6 +81,12 @@ namespace SWD
             {
                 mainDataGrid.Columns.RemoveAt(0);
             }
+        }
+
+        private void buttonCharts_Click(object sender, RoutedEventArgs e)
+        {
+            ChartWindow chartsWindow = new ChartWindow(mainTable);
+            chartsWindow.ShowDialog();
         }
     }
 }
