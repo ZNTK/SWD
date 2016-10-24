@@ -19,6 +19,7 @@ using SWD.Import;
 using SWD.ConvertToNum;
 using SWD.Discretization;
 using SWD.Charts;
+using SWD.Normalization;
 
 namespace SWD
 {
@@ -70,6 +71,15 @@ namespace SWD
 
             ClearMainDataGrid();
             mainDataGrid = DataTableService.InsertDataToGrid(discretizationWindow.mainTable, mainDataGrid);
+        }
+
+        private void buttonNormalize_Click(object sender, RoutedEventArgs e)
+        {
+            NormalizationWindow normalizationWindow = new NormalizationWindow(mainTable);
+            normalizationWindow.ShowDialog();
+
+            ClearMainDataGrid();
+            mainDataGrid = DataTableService.InsertDataToGrid(normalizationWindow.mainTable, mainDataGrid);
         }
 
         private void ClearMainDataGrid()

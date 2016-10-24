@@ -26,8 +26,8 @@
         
         <Button x:Name="buttonImport" Content="Import" Grid.Column="0" Grid.Row="0" Click="buttonImport_Click"/>
         <Button x:Name="buttonConvertToNum" Content="Convert" Grid.Row="0" Grid.Column="1" Click="buttonConvertToNum_Click"/>
-        <Button  x:Name="buttonDiscretize" Content="Discretize" Grid.Row="0" Grid.Column="2" Click="buttonDiscretize_Click"/>        
-        <Button Content="Robo2" Grid.Row="0" Grid.Column="3"/>
+        <Button x:Name="buttonDiscretize" Content="Discretize" Grid.Row="0" Grid.Column="2" Click="buttonDiscretize_Click"/>
+        <Button x:Name="buttonNormalize" Content="Normalize" Grid.Row="0" Grid.Column="3" Click="buttonNormalize_Click"/>
         <Button  x:Name="buttonCharts" Content="Wykres" Grid.Row="0" Grid.Column="4" Click="buttonCharts_Click"/>
         </Grid>
        
