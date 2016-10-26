@@ -13,6 +13,8 @@
             <RowDefinition Height="*"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
             <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid>
             <Grid.RowDefinitions>
@@ -42,7 +44,50 @@
                 <lvc:Axis Name="axisX" Title="" ></lvc:Axis>
             </lvc:CartesianChart.AxisX>
         </lvc:CartesianChart>
-        <Button Name="buttonGeneruj" Grid.Row="2" Height="30" Content="Generuj wykres" Click="buttonGeneruj_Click"></Button>
-        <Button Name="buttonClose" Grid.Row="3" Height="30" Content="Zamknij" Click="buttonClose_Click"></Button>        
+        <Button Name="buttonGeneruj" Grid.Row="2" Height="30" Content="Generuj wykres" Click="buttonGeneruj_Click"></Button>        
+        <Button Name="buttonRozwinKlasyfikacje" Grid.Row="3" Content="Klasyfikacja metodą k-nn 1" Click="buttonRozwinKlasyfikacje_Click"></Button>        
+        <Grid Name="gridKlasyfikacja" Grid.Row="4" Visibility="Collapsed" Margin="0,10,0,10" Background="AntiqueWhite">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"></RowDefinition>
+                <RowDefinition Height="Auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            
+            <Grid Grid.Row="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                    <ColumnDefinition Width="1*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+
+                <Label Name="labelWartoscX" Grid.Row="0" Grid.Column="0" Content="wartość X" HorizontalAlignment="Center"/>
+                <Label Name="labelWartoscY" Grid.Row="0" Grid.Column="1" Content="wartość Y" HorizontalAlignment="Center"/>
+                <TextBox Name="textBoxWartoscX" Grid.Row="1" Grid.Column="0" Text="" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30"/>
+                <TextBox Name="textBoxWartoscY" Grid.Row="1" Grid.Column="1" Text="" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30"/>
+
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Label Grid.Row="0" Content="Metryka oceny odległośći" HorizontalContentAlignment="Center"/>
+                <ComboBox Grid.Row="1" Name="comboBoxMetrykaOcenyOdleglosci" HorizontalContentAlignment="Center" ItemsSource="{Binding metrykaBinding}"/>
+                <Button Name="buttonKlasyfikuj" Grid.Row="2" Content="Klasyfikuj" Click="buttonKlasyfikuj_Click"/>
+                <Label Grid.Row="3" Content="Klasa:" HorizontalAlignment="Center"/>
+                <TextBox Name="textBoxKlasa" Grid.Row="4" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" Text="klasa" Height="30"/>
+                <Button Name="buttonZwin" Grid.Row="5" Content="^^^^^^^^^" Height="14" VerticalContentAlignment="Top" Click="buttonZwin_Click"/>
+            </Grid>
+            
+        </Grid>
+        <Button Name="buttonClose" Grid.Row="5" Height="30" Content="Zamknij" Click="buttonClose_Click"></Button>        
     </Grid>
 </Window>
