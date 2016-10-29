@@ -64,8 +64,8 @@
 
                 <Label Name="labelWartoscX" Grid.Row="0" Grid.Column="0" Content="wartość X" HorizontalAlignment="Center"/>
                 <Label Name="labelWartoscY" Grid.Row="0" Grid.Column="1" Content="wartość Y" HorizontalAlignment="Center"/>
-                <TextBox Name="textBoxWartoscX" Grid.Row="1" Grid.Column="0" Text="" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30"/>
-                <TextBox Name="textBoxWartoscY" Grid.Row="1" Grid.Column="1" Text="" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30"/>
+                <TextBox Name="textBoxWartoscX" Grid.Row="1" Grid.Column="0" Text="" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30" TextChanged="textBoxWartoscX_TextChanged"/>
+                <TextBox Name="textBoxWartoscY" Grid.Row="1" Grid.Column="1" Text="" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Height="30" TextChanged="textBoxWartoscY_TextChanged"/>
 
             </Grid>
 
@@ -79,19 +79,22 @@
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
                     <RowDefinition Height="Auto"></RowDefinition>
+                    <RowDefinition Height="Auto"></RowDefinition>
                 </Grid.RowDefinitions>
 
                 <Label Grid.Row="0" Content="Liczba sąsiadów:" HorizontalAlignment="Center"/>
-                <TextBox Name="textBoxLiczbaSasiadow" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="" Height="30"/>
+                <TextBox Name="textBoxLiczbaSasiadow" Grid.Row="1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="" Height="30" TextChanged="textBoxLiczbaSasiadow_TextChanged"/>
                 <Label Grid.Row="2" Content="Metryka oceny odległośći" HorizontalContentAlignment="Center"/>
-                <ComboBox Grid.Row="3" Name="comboBoxMetrykaOcenyOdleglosci" HorizontalContentAlignment="Center" ItemsSource="{Binding metrykaBinding}" Height="30"/>
-                <Button Name="buttonKlasyfikuj" Grid.Row="4" Content="Klasyfikuj" Click="buttonKlasyfikuj_Click"/>
+                <ComboBox Grid.Row="3" Name="comboBoxMetrykaOcenyOdleglosci" HorizontalContentAlignment="Center" ItemsSource="{Binding metrykaBinding}" Height="30" SelectionChanged="comboBoxMetrykaOcenyOdleglosci_SelectionChanged"/>
+                <Button Name="buttonKlasyfikuj" Grid.Row="4" Content="Klasyfikuj" Click="buttonKlasyfikuj_Click" IsEnabled="False"/>
                 <Label Grid.Row="5" Content="Klasa:" HorizontalAlignment="Center"/>
                 <TextBox Name="textBoxKlasa" Grid.Row="6" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" IsReadOnly="True" Text="" Height="30"/>
-                <Button Name="buttonZwin" Grid.Row="7" Content="^^^^^^^^^" Height="14" VerticalContentAlignment="Top" Click="buttonZwin_Click"/>
+                <Button Name="buttonJakoscKlasyfikacji" Grid.Row="7" Height="30" Content="Oceń jakość klasyfikacji" Click="buttonJakoscKlasyfikacji_Click" IsEnabled="False"></Button>
+                <Button Name="buttonZwin" Grid.Row="8" Content="^^^^^^^^^" Height="14" VerticalContentAlignment="Top" Click="buttonZwin_Click"/>
             </Grid>
             
         </Grid>
+        
         <Button Name="buttonClose" Grid.Row="5" Height="30" Content="Zamknij" Click="buttonClose_Click"></Button>        
     </Grid>
 </Window>

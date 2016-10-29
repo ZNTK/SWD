@@ -79,9 +79,6 @@
     <Compile Include="KNearestNeighbours\Models\ClassDistance.cs" />
     <Compile Include="KNearestNeighbours\Models\ClassPoint.cs" />
     <Compile Include="KNearestNeighbours\Models\ClassPointDistance.cs" />
-    <Compile Include="KNearestNeighbours\QualityAssessmentClassificationWindow.xaml.cs">
-      <DependentUpon>QualityAssessmentClassificationWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Services\ChartsService.cs" />
     <Compile Include="Normalization\NormalizationWindow.xaml.cs">
       <DependentUpon>NormalizationWindow.xaml</DependentUpon>
@@ -104,10 +101,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Import\ImportWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="KNearestNeighbours\QualityAssessmentClassificationWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -93,5 +93,60 @@ namespace SWD.Charts
                 Fill = Brushes.Black
             });
         }
+
+        private void buttonJakoscKlasyfikacji_Click(object sender, RoutedEventArgs e)
+        {
+            double doubleResult = KNearestNeighboursService.GetQualityClassification(classPointList, Convert.ToInt32(textBoxLiczbaSasiadow.Text), comboBoxMetrykaOcenyOdleglosci.SelectedIndex);
+
+            MessageBox.Show("Jakość klasyfikacji jest równa: " + doubleResult.ToString());
+        }
+
+        private void comboBoxMetrykaOcenyOdleglosci_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            IsAllDataForClassificationFilled();
+            IsAllDataForQualityClassificationFilled();
+        }
+
+        private void textBoxLiczbaSasiadow_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            IsAllDataForClassificationFilled();
+            IsAllDataForQualityClassificationFilled();
+        }
+
+        private void textBoxWartoscX_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            IsAllDataForClassificationFilled();
+        }
+
+        private void textBoxWartoscY_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            IsAllDataForClassificationFilled();
+        }
+
+        private void IsAllDataForClassificationFilled()
+        {
+            if(textBoxWartoscX.Text != ""
+                && textBoxWartoscY.Text != ""
+                && textBoxLiczbaSasiadow.Text != ""
+                && comboBoxMetrykaOcenyOdleglosci.SelectedIndex > -1)
+            {
+                buttonKlasyfikuj.IsEnabled = true;
+            } else
+            {
+                buttonKlasyfikuj.IsEnabled = false;
+            }
+        }
+
+        private void IsAllDataForQualityClassificationFilled()
+        {
+            if(textBoxLiczbaSasiadow.Text != "" && comboBoxMetrykaOcenyOdleglosci.SelectedIndex > -1)
+            {
+                buttonJakoscKlasyfikacji.IsEnabled = true;
+            }
+            else
+            {
+                buttonJakoscKlasyfikacji.IsEnabled = false;
+            }
+        }
     }
 }
