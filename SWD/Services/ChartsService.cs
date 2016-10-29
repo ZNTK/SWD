@@ -1,6 +1,7 @@
 ﻿using LiveCharts;
 using LiveCharts.Defaults;
 using LiveCharts.Wpf;
+using SWD.KNearestNeighbours.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,24 +14,18 @@ namespace SWD.Services
 {
     class ChartsService
     {
-        public static SeriesCollection GetNewSeriesCollectionDependOnColumns(List<double> firstColumn, List<double> secondColumn, List<string> classColumn)
+        public static SeriesCollection GetNewSeriesCollectionDependOnColumns(List<ClassPoint> classPointList)
         {
             SeriesCollection seriesCollection = new SeriesCollection();
-            List<string> classColumnListDistinct = classColumn.Distinct().ToList();
-            var tupleZWartosciami = new List<Tuple<double, double, string>>();
-
-            for (int i = 0; i < firstColumn.Count; i++)
-            {
-                tupleZWartosciami.Add(Tuple.Create(firstColumn[i], secondColumn[i], classColumn[i]));
-            }
+            List<string> classColumnListDistinct = classPointList.Select(x => x.klasa).Distinct().ToList();
 
             foreach (var classItem in classColumnListDistinct)
             {
                 ChartValues<ScatterPoint> values = new ChartValues<ScatterPoint>();
-                var listaDanejKlasy = tupleZWartosciami.Where(x => x.Item3 == classItem).ToList();
+                var listaDanejKlasy = classPointList.Where(x => x.klasa == classItem).ToList();
                 foreach(var item in listaDanejKlasy)
                 {
-                    values.Add(new ScatterPoint(item.Item1, item.Item2, 1));
+                    values.Add(new ScatterPoint(item.columnX, item.columnY, 1));
                 }
                 seriesCollection.Add(new ScatterSeries
                 {

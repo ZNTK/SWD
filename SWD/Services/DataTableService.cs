@@ -1,4 +1,5 @@
-﻿using SWD.Model;
+﻿using SWD.KNearestNeighbours.Models;
+using SWD.Model;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -56,19 +57,14 @@ namespace SWD.Services
             return columnList;
         }
 
-        public static List<double>  ConvertStingListToDoubleList(List<string> list, string separator)
+        public static List<ClassPoint> GetColumnFromTableAsClassPointList(Model.Table table, int firstColumnNumber,int secondColumnNumber,int classColumnNumber)
         {
-            List<double> doubleList = new List<double>();
-            foreach (var item in list)
+            List<ClassPoint> classPointList = new List<ClassPoint>();
+            foreach(var row in table.Rows)
             {
-                string temp = item;
-                if (item.StartsWith(separator))
-                {
-                    temp = "0" + item;
-                }
-                doubleList.Add(Convert.ToDouble(temp.Replace(separator.ToCharArray()[0], '.')));
+                classPointList.Add(new ClassPoint(row.Cells[classColumnNumber].Value, Convert.ToDouble(row.Cells[firstColumnNumber].Value), Convert.ToDouble(row.Cells[secondColumnNumber].Value)));
             }
-            return doubleList;
+            return classPointList;
         }
 
         public static List<string> GetColumnHeadersAsList(Model.Table table)

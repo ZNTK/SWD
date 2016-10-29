@@ -1,6 +1,7 @@
 ﻿using LiveCharts;
 using LiveCharts.Defaults;
 using LiveCharts.Wpf;
+using SWD.KNearestNeighbours.Models;
 using SWD.Services;
 using System;
 using System.Collections.Generic;
@@ -25,6 +26,7 @@ namespace SWD.Charts
     {        
         public List<string> columnBinding { get; set; }
         public List<string> metrykaBinding { get; set; }
+        List<ClassPoint> classPointList;
         public Model.Table mainTable;
         public ChartWindow(Model.Table table)
         {
@@ -37,16 +39,22 @@ namespace SWD.Charts
 
         private void buttonGeneruj_Click(object sender, RoutedEventArgs e)
         {
-            List<string> firstColumn = DataTableService.GetColumFromTableAsList(mainTable, comboBoxFirstColumn.SelectedIndex);
-            List<string> secondColumn = DataTableService.GetColumFromTableAsList(mainTable, comboBoxSecondColumn.SelectedIndex);
-            List<string> classColumn = DataTableService.GetColumFromTableAsList(mainTable, comboBoxClassColumn.SelectedIndex);
+            if (comboBoxFirstColumn.SelectedIndex == -1
+                || comboBoxSecondColumn.SelectedIndex == -1
+                || comboBoxClassColumn.SelectedIndex == -1)
+            {
+                MessageBox.Show("Nie wybrano wartości dla wszystkich kolumn");
+            }
+            else
+            {
+                classPointList = DataTableService.GetColumnFromTableAsClassPointList(mainTable, comboBoxFirstColumn.SelectedIndex, comboBoxSecondColumn.SelectedIndex, comboBoxClassColumn.SelectedIndex);
 
-            List<double> firstColumnDouble = DataTableService.ConvertStingListToDoubleList(firstColumn, ".");
-            List<double> secondColumnDouble = DataTableService.ConvertStingListToDoubleList(secondColumn, ".");
+                cartesianChart.Series = ChartsService.GetNewSeriesCollectionDependOnColumns(classPointList);
+                axisX.Title = comboBoxFirstColumn.SelectedItem.ToString();
+                axisY.Title = comboBoxSecondColumn.SelectedItem.ToString();
 
-            cartesianChart.Series = ChartsService.GetNewSeriesCollectionDependOnColumns(firstColumnDouble, secondColumnDouble, classColumn);
-            axisX.Title = comboBoxFirstColumn.SelectedItem.ToString();
-            axisY.Title = comboBoxSecondColumn.SelectedItem.ToString();
+                buttonRozwinKlasyfikacje.IsEnabled = true;
+            }
         }
 
         private void buttonClose_Click(object sender, RoutedEventArgs e)
@@ -70,8 +78,20 @@ namespace SWD.Charts
 
         private void buttonKlasyfikuj_Click(object sender, RoutedEventArgs e)
         {
-            //tu ta cala akcja
+            Point point = new Point(Convert.ToDouble(textBoxWartoscX.Text), Convert.ToDouble(textBoxWartoscY.Text));
+            int numberOfNeighbours = Convert.ToInt32(textBoxLiczbaSasiadow.Text);
 
+            textBoxKlasa.Text = KNearestNeighboursService.GetNewClassDependsOnPoint(point, classPointList, numberOfNeighbours, comboBoxMetrykaOcenyOdleglosci.SelectedIndex);
+
+            cartesianChart.Series.Add(new ScatterSeries()
+            {
+                Values = new ChartValues<ScatterPoint>()
+                {
+                    new ScatterPoint(point.X,point.Y,1)
+                },
+                PointGeometry = DefaultGeometries.Diamond,
+                Fill = Brushes.Black
+            });
         }
     }
 }
