@@ -33,8 +33,11 @@ namespace SWD.Services
                         classPointDistances.Add(new ClassPointDistance(classPoint.klasa, classPoint.columnX, classPoint.columnY, GetManhattanDistance(point, classPoint)));
                     }
                     break;
-                case 2://nieskonczonosc
-
+                case 2://nieskonczonosc//czebyszewa
+                    foreach (var classPoint in classPointList)
+                    {
+                        classPointDistances.Add(new ClassPointDistance(classPoint.klasa, classPoint.columnX, classPoint.columnY, GetInfinityDistance(point, classPoint)));
+                    }
                     break;
                 case 3://Mahalanobisa
 
@@ -69,7 +72,34 @@ namespace SWD.Services
 
         public static double GetManhattanDistance(Point pointOne, ClassPoint pointTwo)
         {
-            return (Math.Sqrt(Math.Pow(pointOne.X - pointTwo.columnX, 2))) + (Math.Sqrt(Math.Pow(pointOne.Y - pointTwo.columnY, 2)));
+            return (Math.Abs(pointOne.X - pointTwo.columnX)) + (Math.Abs(pointOne.Y - pointTwo.columnY));
+        }
+
+        public static double GetInfinityDistance(Point pointOne, ClassPoint pointTwo) // chebyshev distance // odległość czebyszewa
+        {
+            return Math.Max(Math.Abs(pointOne.X - pointTwo.columnX), Math.Abs(pointOne.Y - pointTwo.columnY));
+        }
+
+        public static double GetMahalanobisDistance(Point pointOne,ClassPoint pointTwo)
+        {
+            return 1;
+        }
+
+        //ocena jakosci klasyfikacji
+
+        public static double GetQualityClassification(List<ClassPoint> classPointList, int numberOfNeighbors, int method)
+        {
+            int classEqualsCount = 0;
+            foreach(var classPoint in classPointList)
+            {
+                var classPointListWithoutClassPoint = classPointList.Where(x => !x.Equals(classPoint)).ToList();
+                string newClass = GetNewClassDependsOnPoint(new Point(classPoint.columnX, classPoint.columnY), classPointListWithoutClassPoint, numberOfNeighbors, method);
+                if (classPoint.klasa == newClass)
+                {
+                    classEqualsCount++;
+                }
+            }
+            return (double)classEqualsCount / (double)classPointList.Count;
         }
     }
 }
