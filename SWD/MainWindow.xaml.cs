@@ -20,6 +20,7 @@ using SWD.ConvertToNum;
 using SWD.Discretization;
 using SWD.Charts;
 using SWD.Normalization;
+using SWD.KNearestNeighbours;
 
 namespace SWD
 {
@@ -97,6 +98,12 @@ namespace SWD
         {
             ChartWindow chartsWindow = new ChartWindow(mainTable);
             chartsWindow.ShowDialog();
+        }
+
+        private void buttonKNN_Click(object sender, RoutedEventArgs e)
+        {
+            KNearestNeighboursWindow kNearestNeighbours = new KNearestNeighboursWindow(mainTable);
+            kNearestNeighbours.ShowDialog();
         }
     }
 }

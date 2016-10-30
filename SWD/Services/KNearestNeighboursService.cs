@@ -80,7 +80,7 @@ namespace SWD.Services
             return Math.Max(Math.Abs(pointOne.X - pointTwo.columnX), Math.Abs(pointOne.Y - pointTwo.columnY));
         }
 
-        public static double GetMahalanobisDistance(Point pointOne,ClassPoint pointTwo)
+        public static double GetMahalanobisDistance(Point pointOne,ClassPoint pointTwo) // te cale jast napisane na 2 wymiarowe i KNearestNeighboursNColumsService trzeba sie bawic bo tam dla roznych
         {
             return 1;
         }
