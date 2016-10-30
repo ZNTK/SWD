@@ -55,8 +55,8 @@ namespace SWD.KNearestNeighbours
         private void comboBoxClassColumn_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             valuesWithClass = DataTableService.GetColumnsFromTableAsValuesWithClassList(table, comboBoxClassColumn.SelectedIndex);
-
-            for (int i = 0; i < columnBinding.Count; i++)
+            int j = 0;
+            for (int i = 1; i < columnBinding.Count; i++)
             {
                 if (i != comboBoxClassColumn.SelectedIndex)
                 {
@@ -78,11 +78,23 @@ namespace SWD.KNearestNeighbours
                     gridValues.Children.Add(tempLabel);
                     gridValues.Children.Add(tempTextBox);
 
-                    Grid.SetRow(tempLabel, 0);
-                    Grid.SetColumn(tempLabel, i);
+                    Grid.SetRow(tempLabel, j);
+                    Grid.SetColumn(tempLabel, i - (j/2 * 20));
 
-                    Grid.SetRow(tempTextBox, 1);
-                    Grid.SetColumn(tempTextBox, i);
+                    Grid.SetRow(tempTextBox, j + 1);
+                    Grid.SetColumn(tempTextBox, i - (j/2 * 20));
+                }
+                if (i % 20 == 0 && i != 0)
+                {
+                    j += 2;
+                    gridValues.RowDefinitions.Add(new RowDefinition()
+                    {
+                        Height = GridLength.Auto
+                    });
+                    gridValues.RowDefinitions.Add(new RowDefinition()
+                    {
+                        Height = GridLength.Auto
+                    });
                 }
             }
             DataContext = this;

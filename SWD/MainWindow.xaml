@@ -5,8 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SWD"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
-    <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible">
+        Title="MainWindow" Height="350" Width="525"
+        SizeToContent="WidthAndHeight">
         <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />
@@ -35,10 +35,14 @@
        
         <DataGrid AutoGenerateColumns="False" Grid.Row="1"
                   ItemsSource="{Binding}"
-                  Name="mainDataGrid" />
+                  Name="mainDataGrid"
+                  EnableColumnVirtualization="True"
+                  EnableRowVirtualization="True"
+                  MaxWidth="1000"
+                  MaxHeight="600"
+                  Margin="10"/>
        
 
 
     </Grid>
-    </ScrollViewer>
 </Window>
