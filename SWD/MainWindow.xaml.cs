@@ -105,5 +105,11 @@ namespace SWD
             KNearestNeighboursWindow kNearestNeighbours = new KNearestNeighboursWindow(mainTable);
             kNearestNeighbours.ShowDialog();
         }
+
+        private void buttonKNNChart_Click(object sender, RoutedEventArgs e)
+        {
+            KNNChartWindow kNNChartWindow = new KNNChartWindow(mainTable);
+            kNNChartWindow.ShowDialog();
+        }
     }
 }

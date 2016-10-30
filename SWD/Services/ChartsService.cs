@@ -33,6 +33,27 @@ namespace SWD.Services
                 });
             }
             return seriesCollection;
-        }        
+        }
+        
+        public static SeriesCollection GetSeriesCollectionForLineChart(List<ValuesWithClass> valuesWithClass)
+        {
+            SeriesCollection seriesCollection = new SeriesCollection();
+            List<List<double>> listOfClassification = KNearestNeighboursNColumsService.GetQualityClassificationForAllMetricAndNeighbors(valuesWithClass);
+            List<string> metrics = new List<string>() { "odległość Euklidesowa", "metryka Manhattan", "nieskończoność", "Mahalanobisa" };
+            for (int i = 0; i < 3; i++)
+            {
+                ChartValues<double> chartValues = new ChartValues<double>();
+                foreach(var item in listOfClassification[i])
+                {
+                    chartValues.Add(item);
+                }
+                seriesCollection.Add(new LineSeries()
+                {
+                    Title = metrics[i],
+                    Values = chartValues
+                });
+            }
+            return seriesCollection;
+        }  
     }
 }

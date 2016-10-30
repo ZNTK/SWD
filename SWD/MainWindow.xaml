@@ -23,6 +23,7 @@
                 <ColumnDefinition Width="60" />
                 <ColumnDefinition Width="60" />
                 <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="60" />
             </Grid.ColumnDefinitions>
         
         <Button x:Name="buttonImport" Content="Import" Grid.Column="0" Grid.Row="0" Click="buttonImport_Click"/>
@@ -31,6 +32,7 @@
         <Button x:Name="buttonNormalize" Content="Normalize" Grid.Row="0" Grid.Column="3" Click="buttonNormalize_Click"/>
         <Button  x:Name="buttonCharts" Content="Wykres" Grid.Row="0" Grid.Column="4" Click="buttonCharts_Click"/>
         <Button  x:Name="buttonKNN" Content="KNN" Grid.Row="0" Grid.Column="5" Click="buttonKNN_Click" />
+        <Button  x:Name="buttonKNNChart" Content="KNN Wykres" Grid.Row="0" Grid.Column="6" Click="buttonKNNChart_Click" />
         </Grid>
        
         <DataGrid AutoGenerateColumns="False" Grid.Row="1"
