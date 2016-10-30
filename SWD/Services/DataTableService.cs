@@ -67,6 +67,27 @@ namespace SWD.Services
             return classPointList;
         }
 
+        public static List<ValuesWithClass> GetColumnsFromTableAsValuesWithClassList(Model.Table table, int classColumnNumber)
+        {
+            List<ValuesWithClass> valuesWithClass = new List<ValuesWithClass>();
+            foreach(var row in table.Rows)
+            {
+                List<double> tempList = new List<double>();
+                int i = 0;
+                foreach(var cell in row.Cells)
+                {
+                    if(i != classColumnNumber)
+                    {
+                        tempList.Add(Convert.ToDouble(cell.Value));
+                    }
+                    i++;
+                }
+                valuesWithClass.Add(new ValuesWithClass(tempList, row.Cells[classColumnNumber].Value));
+                tempList.Clear();
+            }
+            return valuesWithClass;
+        }
+
         public static List<string> GetColumnHeadersAsList(Model.Table table)
         {
             List<string> stringTable = new List<string>();
