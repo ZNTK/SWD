@@ -109,5 +109,20 @@ namespace SWD.Services
             }
             return (double)classEqualsCount / (double)valuesWithClass.Count;
         }
+
+        public static List<List<double>> GetQualityClassificationForAllMetricAndNeighbors(List<ValuesWithClass> valuesWithClass)
+        {
+            List<List<double>> listOfMetrics = new List<List<double>>();
+            for(int i = 0; i < 3; i++)//to na 4 zminic i jeszcze w chartsservice
+            {
+                List<double> tempList = new List<double>();
+                for(int j = 1; j < valuesWithClass.Count; j++)
+                {
+                    tempList.Add(GetQualityClassification(valuesWithClass, j, i));
+                }
+                listOfMetrics.Add(tempList);
+            }
+            return listOfMetrics;
+        }
     }
 }

@@ -66,6 +66,9 @@
     <Compile Include="Charts\ChartWindow.xaml.cs">
       <DependentUpon>ChartWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Charts\KNNChartWindow.xaml.cs">
+      <DependentUpon>KNNChartWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ConvertToNum\ConvertToNumWindow.xaml.cs">
       <DependentUpon>ConvertToNumWindow.xaml</DependentUpon>
     </Compile>
@@ -95,6 +98,10 @@
     <Compile Include="Services\NormalizationService.cs" />
     <Compile Include="Services\ValidationService.cs" />
     <Page Include="Charts\ChartWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Charts\KNNChartWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

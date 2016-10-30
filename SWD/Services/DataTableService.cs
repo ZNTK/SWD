@@ -83,7 +83,6 @@ namespace SWD.Services
                     i++;
                 }
                 valuesWithClass.Add(new ValuesWithClass(tempList, row.Cells[classColumnNumber].Value));
-                tempList.Clear();
             }
             return valuesWithClass;
         }

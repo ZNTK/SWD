@@ -1,0 +1,30 @@
+﻿<Window x:Class="SWD.Charts.KNNChartWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SWD.Charts"
+        xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+        mc:Ignorable="d"
+        Title="KNNChartWindow" Height="300" Width="300"
+        SizeToContent="WidthAndHeight">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <ComboBox Name="comboBoxClassColumn" Grid.Row="0" ItemsSource="{Binding columnBinding}" SelectionChanged="comboBoxClassColumn_SelectionChanged"/>
+        <lvc:CartesianChart Name="cartesianChart" Series="{Binding SeriesCollection}" LegendLocation="Right" Grid.Row="1" Height="600" Width="1200" Zoom="X">
+            <lvc:CartesianChart.AxisY>
+                <lvc:Axis Title="Iloraz Klasyfikacji"></lvc:Axis>
+            </lvc:CartesianChart.AxisY>
+            <lvc:CartesianChart.AxisX>
+                <lvc:Axis Title="Liczba sąsiadów"></lvc:Axis>
+            </lvc:CartesianChart.AxisX>
+        </lvc:CartesianChart>
+
+        <Button Name="buttonGenerujWykres" Grid.Row="2" Content="Generuj wykres" Click="buttonGenerujWykres_Click"/>
+    </Grid>
+</Window>
