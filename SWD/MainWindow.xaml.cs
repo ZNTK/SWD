@@ -111,5 +111,12 @@ namespace SWD
             KNNChartWindow kNNChartWindow = new KNNChartWindow(mainTable);
             kNNChartWindow.ShowDialog();
         }
+
+        private void buttonExportToCsv_Click(object sender, RoutedEventArgs e)
+        {
+            DataTableService.ExportDataTableToCsv(mainTable);
+        }
+
+        
     }
 }
