@@ -96,5 +96,40 @@ namespace SWD.Services
             }
             return stringTable;
         }
+
+        public static void ExportDataTableToCsv(Model.Table table)
+        {
+            string filePath = Directory.GetCurrentDirectory() + "/" + DateTime.Now.ToString("ddMMyyyy_HHmmss") + ".csv";
+
+            if (!File.Exists(filePath))
+                File.Create(filePath).Close();
+
+            List<string> output = new List<string>();
+
+
+            List<string> headersValueLine = new List<string>();
+            foreach (Model.Cell cell in table.Headers.Cells)
+            {
+                headersValueLine.Add(cell.Value);
+            }
+
+            output.Add(string.Join(";", headersValueLine));
+
+            foreach(Model.Row row in table.Rows)
+            {
+                List<string> rowValuesLine = new List<string>();
+                foreach (Model.Cell cell in row.Cells)
+                {
+                    rowValuesLine.Add(cell.Value);
+                }
+
+                output.Add(string.Join(";", rowValuesLine));
+            }
+
+
+            System.IO.File.WriteAllLines(filePath, output);
+
+
+        }
     }
 }
