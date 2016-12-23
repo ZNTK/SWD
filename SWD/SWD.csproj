@@ -79,6 +79,10 @@
     <Compile Include="Import\ImportWindow.xaml.cs">
       <DependentUpon>ImportWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="KMeans\KMeansWindow.xaml.cs">
+      <DependentUpon>KMeansWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="KMeans\Model\RowClass.cs" />
     <Compile Include="KNearestNeighbours\KNearestNeighboursWindow.xaml.cs">
       <DependentUpon>KNearestNeighboursWindow.xaml</DependentUpon>
     </Compile>
@@ -93,6 +97,7 @@
     </Compile>
     <Compile Include="Services\DataTableService.cs" />
     <Compile Include="Services\DiscretizationService.cs" />
+    <Compile Include="Services\KMeansService.cs" />
     <Compile Include="Services\KNearestNeighboursNColumsService.cs" />
     <Compile Include="Services\KNearestNeighboursService.cs" />
     <Compile Include="Services\NormalizationService.cs" />
@@ -114,6 +119,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Import\ImportWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="KMeans\KMeansWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

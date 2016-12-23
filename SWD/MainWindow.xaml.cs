@@ -21,6 +21,7 @@ using SWD.Discretization;
 using SWD.Charts;
 using SWD.Normalization;
 using SWD.KNearestNeighbours;
+using SWD.KMeans;
 
 namespace SWD
 {
@@ -117,6 +118,16 @@ namespace SWD
             DataTableService.ExportDataTableToCsv(mainTable);
         }
 
+        private void buttonGroup_Click(object sender, RoutedEventArgs e)
+        {
+            KMeansWindow kMeansWindow = new KMeansWindow(mainTable);
+            kMeansWindow.ShowDialog();
+
+            ClearMainDataGrid();
+            mainDataGrid = DataTableService.InsertDataToGrid(kMeansWindow.mainTable, mainDataGrid);
+        }
         
+
+
     }
 }

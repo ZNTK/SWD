@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SWD"
         mc:Ignorable="d"
-        Title="SWD" Height="350" Width="525"
+        Title="SWD" Height="350" Width="585"
         SizeToContent="WidthAndHeight">
         <Grid>
         <Grid.RowDefinitions>
@@ -25,6 +25,7 @@
                 <ColumnDefinition Width="60" />
                 <ColumnDefinition Width="60" />
                 <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="60" />
             </Grid.ColumnDefinitions>
         
         <Button x:Name="buttonImport" Content="Import" Grid.Column="0" Grid.Row="0" Click="buttonImport_Click"/>
@@ -34,7 +35,8 @@
         <Button  x:Name="buttonCharts" Content="Wykres" Grid.Row="0" Grid.Column="4" Click="buttonCharts_Click"/>
         <Button  x:Name="buttonKNN" Content="KNN" Grid.Row="0" Grid.Column="5" Click="buttonKNN_Click" />
         <Button  x:Name="buttonKNNChart" Content="KNN Wykres" Grid.Row="0" Grid.Column="6" Click="buttonKNNChart_Click" />
-        <Button  x:Name="buttonExportToCsv" Content="Export" Grid.Row="0" Grid.Column="7" Click="buttonExportToCsv_Click" />
+        <Button  x:Name="buttonGroup" Content="K-means" Grid.Row="0" Grid.Column="7" Click="buttonGroup_Click" />
+        <Button  x:Name="buttonExportToCsv" Content="Export" Grid.Row="0" Grid.Column="8" Click="buttonExportToCsv_Click" />
         </Grid>
        
         <DataGrid AutoGenerateColumns="False" Grid.Row="1"
