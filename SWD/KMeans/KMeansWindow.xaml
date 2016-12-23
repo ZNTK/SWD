@@ -1,0 +1,29 @@
+﻿<Window x:Class="SWD.KMeans.KMeansWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SWD.KMeans"
+        mc:Ignorable="d"
+        Title="KMeansWindow" Height="300" Width="300">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" >
+            </RowDefinition>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="150" />
+        </Grid.ColumnDefinitions>
+
+        <Label Grid.Row="0" Grid.Column="0" HorizontalContentAlignment="Center">Klasa decyzyjna</Label>
+        <ComboBox Name="comboBoxColumn" Grid.Row="0" Grid.Column="1" HorizontalContentAlignment="Center" ItemsSource="{Binding}">
+        </ComboBox>
+        <Label Grid.Row="1" Grid.Column="0">Liczba przedziałów:</Label>
+        <TextBox Name="textBoxSectionCount" Grid.Row="1" Grid.Column="1"></TextBox>
+        <Button Grid.Row="2" Grid.ColumnSpan="2" Name="buttonGroup" Content="Grupuj" Click="buttonGroup_Click"></Button>
+    </Grid>
+</Window>
