@@ -72,6 +72,7 @@
     <Compile Include="ConvertToNum\ConvertToNumWindow.xaml.cs">
       <DependentUpon>ConvertToNumWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DecisionTree\Models\Leaf.cs" />
     <Compile Include="Discretization\DiscretizationWindow.xaml.cs">
       <DependentUpon>DiscretizationWindow.xaml</DependentUpon>
     </Compile>
@@ -96,6 +97,7 @@
       <DependentUpon>NormalizationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Services\DataTableService.cs" />
+    <Compile Include="Services\DecisionTreeService.cs" />
     <Compile Include="Services\DiscretizationService.cs" />
     <Compile Include="Services\KMeansService.cs" />
     <Compile Include="Services\KNearestNeighboursNColumsService.cs" />

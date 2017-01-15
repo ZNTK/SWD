@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SWD.KMeans.Model;
 using System.Windows;
 
+
 namespace SWD.Services
 {
     public static class KMeansService
