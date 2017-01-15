@@ -1,20 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using SWD.Model;
+﻿using System.Windows;
 using SWD.Services;
-using Microsoft.Win32;
 using SWD.Import;
 using SWD.ConvertToNum;
 using SWD.Discretization;
@@ -126,7 +111,17 @@ namespace SWD
             ClearMainDataGrid();
             mainDataGrid = DataTableService.InsertDataToGrid(kMeansWindow.mainTable, mainDataGrid);
         }
+
+        private void buttonTree_Click(object sender, RoutedEventArgs e)
+        {
+            mainTable = DecisionTreeService.Group(mainTable);
+
+            ClearMainDataGrid();
+            mainDataGrid = DataTableService.InsertDataToGrid(mainTable, mainDataGrid);
+            MessageBox.Show(mainTable.ResultInfo);
+        }
         
+
 
 
     }

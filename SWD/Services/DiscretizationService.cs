@@ -34,6 +34,21 @@ namespace SWD.Services
             return table;
         }
 
+        public static Model.Table DiscretizeWithReplaceColumn(Model.Table table, int selectedColumnIndex, int sectionCount)
+        {
+            List<Section> sections = GetSectionList(table, selectedColumnIndex, sectionCount);
+
+            for(int i = 0; i < table.Rows.Count ; i++)
+            {
+                table.Rows[i].Cells[selectedColumnIndex].Value = GetNumberOfSection(
+                            Convert.ToDouble(table.Rows[i].Cells[selectedColumnIndex].Value)
+                            , sections).ToString();
+            }
+
+
+            return table;
+        }
+
 
         private static List<Section> GetSectionList(Model.Table table, int selectedColumnIndex, int sectionCount)
         {

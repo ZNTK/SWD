@@ -51,5 +51,6 @@ namespace SWD.Model
 
         public List<Row> Rows { get; set; }
         public Row Headers { get; set; }
+        public string ResultInfo { get; set; }
     }
 }
