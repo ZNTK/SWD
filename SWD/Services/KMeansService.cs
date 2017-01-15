@@ -54,8 +54,9 @@ namespace SWD.Services
             List<RowClass> rowClasses_prev = new List<RowClass>();
 
             int safetyCounter = 0;
-            while (CheckIfMeansChanged(rowClasses_prev, rowClasses) && safetyCounter < 1000)
-            {
+             while (safetyCounter < 1000 || (CheckIfMeansChanged(rowClasses_prev, rowClasses)))
+            //while (safetyCounter < 1000)
+                {
                 rowClasses_prev = rowClasses;
                 
 
@@ -122,10 +123,10 @@ namespace SWD.Services
             rowClass.RowIndex = rowIndex;
             rowClass.ClassIndex = 0;
 
-            double currentDistance = GetEuclidesDistance(row, means[0]);
+            double currentDistance = GetInfinityDistance(row, means[0]);
             for (int i = 1; i < means.Count; i++)
             {
-                double distance = GetEuclidesDistance(row, means[i]);
+                double distance = GetInfinityDistance(row, means[i]);
                 if (distance < currentDistance)
                 {
                     rowClass.ClassIndex = i;
@@ -227,14 +228,28 @@ namespace SWD.Services
             return Math.Sqrt(sum);
         }
 
-        public static double GetManhattanDistance(Point pointOne, Point pointTwo)
+        public static double GetManhattanDistance(Model.Row rowA, Model.Row rowB)
         {
-            return (Math.Abs(pointOne.X - pointTwo.X)) + (Math.Abs(pointOne.Y - pointTwo.Y));
+            double sum = 0;
+            for (int i = 0; i < rowA.Cells.Count - 1; i++)
+                sum += Math.Abs(double.Parse(rowA.Cells[i].Value) - double.Parse(rowB.Cells[i].Value));
+
+            return sum;
         }
 
-        public static double GetInfinityDistance(Point pointOne, Point pointTwo) // chebyshev distance // odległość czebyszewa
+        public static double GetInfinityDistance(Model.Row rowA, Model.Row rowB) // chebyshev distance // odległość czebyszewa
         {
-            return Math.Max(Math.Abs(pointOne.X - pointTwo.X), Math.Abs(pointOne.Y - pointTwo.Y));
+            double result = Math.Abs(double.Parse(rowA.Cells[0].Value) - double.Parse(rowB.Cells[0].Value));
+
+            for(int i = 1; i < rowA.Cells.Count - 1 ; i++)
+            {
+                double distance_i = Math.Abs(double.Parse(rowA.Cells[i].Value) - double.Parse(rowB.Cells[i].Value));
+                if (distance_i > result)
+                    result = distance_i;
+            }
+
+            return result;
         }
+
     }
 }
