@@ -77,6 +77,8 @@
       <DependentUpon>DiscretizationWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Discretization\Models\Section.cs" />
+    <Compile Include="ED\Models\ClassCount.cs" />
+    <Compile Include="Enums\LineOrientation.cs" />
     <Compile Include="Import\ImportWindow.xaml.cs">
       <DependentUpon>ImportWindow.xaml</DependentUpon>
     </Compile>
@@ -99,6 +101,7 @@
     <Compile Include="Services\DataTableService.cs" />
     <Compile Include="Services\DecisionTreeService.cs" />
     <Compile Include="Services\DiscretizationService.cs" />
+    <Compile Include="Services\EDService.cs" />
     <Compile Include="Services\KMeansService.cs" />
     <Compile Include="Services\KNearestNeighboursNColumsService.cs" />
     <Compile Include="Services\KNearestNeighboursService.cs" />
