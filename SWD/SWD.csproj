@@ -99,6 +99,7 @@
     <Compile Include="Services\DataTableService.cs" />
     <Compile Include="Services\DecisionTreeService.cs" />
     <Compile Include="Services\DiscretizationService.cs" />
+    <Compile Include="Services\EDService.cs" />
     <Compile Include="Services\KMeansService.cs" />
     <Compile Include="Services\KNearestNeighboursNColumsService.cs" />
     <Compile Include="Services\KNearestNeighboursService.cs" />

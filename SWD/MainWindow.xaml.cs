@@ -120,9 +120,12 @@ namespace SWD
             mainDataGrid = DataTableService.InsertDataToGrid(mainTable, mainDataGrid);
             MessageBox.Show(mainTable.ResultInfo);
         }
-        
 
-
-
+        private void buttonED_Click(object sender, RoutedEventArgs e)
+        {
+            EDService edService = new EDService();
+            //edService.GetAllLines(10, "a", DataTableService.GetColumnsFromTableAsValuesWithClassList(mainTable, 2));
+            mainTable = edService.AddEDColumn(mainTable, edService.GetAllLines(10, "a", DataTableService.GetColumnsFromTableAsValuesWithClassList(mainTable, 2)));
+        }
     }
 }
