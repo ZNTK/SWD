@@ -52,17 +52,17 @@ namespace SWD.Services
             return linesPositions;
         }
 
-        public List<double> CreateVector(List<Tuple<double, int>> linesPositions, List<ValuesWithClass> listValuesWithClass)
-        {
-            List<double> listDouble = new List<double>();
-            foreach (var item in linesPositions)
-            {
+        //public List<double> CreateVector(List<Tuple<double, int>> linesPositions, List<ValuesWithClass> listValuesWithClass)
+        //{
+        //    List<double> listDouble = new List<double>();
+        //    foreach (var item in linesPositions)
+        //    {
 
-            }
+        //    }
             
 
-            return listDouble;
-        }
+        //    return listDouble;
+        //}
 
         public Model.Table AddEDColumn(Model.Table table, List<Tuple<double, int>> linesPositions)
         {
@@ -85,6 +85,7 @@ namespace SWD.Services
                         temp += "0,";
                     }
                 }
+                temp = temp.Remove(temp.Length - 1);
                 temp += "]";
                 row.Cells.Add(
                     new Model.Cell(

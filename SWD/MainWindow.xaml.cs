@@ -7,6 +7,7 @@ using SWD.Charts;
 using SWD.Normalization;
 using SWD.KNearestNeighbours;
 using SWD.KMeans;
+using System;
 
 namespace SWD
 {
@@ -124,8 +125,10 @@ namespace SWD
         private void buttonED_Click(object sender, RoutedEventArgs e)
         {
             EDService edService = new EDService();
-            //edService.GetAllLines(10, "a", DataTableService.GetColumnsFromTableAsValuesWithClassList(mainTable, 2));
-            mainTable = edService.AddEDColumn(mainTable, edService.GetAllLines(10, "a", DataTableService.GetColumnsFromTableAsValuesWithClassList(mainTable, 2)));
+            
+            mainTable = edService.AddEDColumn(mainTable, edService.GetAllLines(10, textBoxNazwaKlasy.Text, DataTableService.GetColumnsFromTableAsValuesWithClassList(mainTable, Convert.ToInt32(textKolumnaKlasy.Text)-1)));
+            ClearMainDataGrid();
+            mainDataGrid = DataTableService.InsertDataToGrid(mainTable, mainDataGrid);
         }
     }
 }
