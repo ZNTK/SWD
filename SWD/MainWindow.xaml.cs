@@ -132,6 +132,13 @@ namespace SWD
             mainTable = edService.AddEDColumn(mainTable, linesPositions);
             ClearMainDataGrid();
             mainDataGrid = DataTableService.InsertDataToGrid(mainTable, mainDataGrid);
+            textBoxDlugosc.Text = linesPositions.Count.ToString();
+        }
+
+        private void buttonEDChart_Click(object sender, RoutedEventArgs e)
+        {
+            EDChartWindow chartsWindow = new EDChartWindow(mainTable, linesPositions);
+            chartsWindow.ShowDialog();
         }
     }
 }
