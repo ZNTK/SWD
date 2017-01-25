@@ -9,29 +9,44 @@ namespace SWD.Services
 {
     public class EDService
     {
-        public Tuple<double, int> EDMethodWhereLine(string pickedClass, List<ValuesWithClass> listValuesWithClass)
+        public Tuple<double, int> EDMethodWhereLine( List<ValuesWithClass> listValuesWithClass, int percent)
         {
-            
 
+            int itemsCount = 0;
             int maxValue = -listValuesWithClass.Count;
             Tuple<double, int> rowAndPosition = new Tuple<double, int>(0, 0);
 
             var valuesList = listValuesWithClass.First().valuesList;
             for (int i = 0; i < valuesList.Count; i++) 
             {
+                int itemCountInside = 0;
+                double pointPositionValue = 0;
                 List<int> tempListWantedItemsCount = new List<int>();
                 List<int> tempListUnWantedItemsCount = new List<int>();
-                var listValuesWithOneClass = listValuesWithClass.Where(x => x.klasa == pickedClass).OrderBy(x => x.valuesList[i]).ToList();
-
-                foreach (var rowValue in listValuesWithOneClass)
+                var listValuesWithAllClasses = listValuesWithClass.OrderBy(x => x.valuesList[i]).ToList();
+                //string actualClass = listValuesWithAllClasses.First().klasa;
+                string prvClass = listValuesWithAllClasses.First().klasa;
+                foreach (var rowValue in listValuesWithAllClasses)
                 {
-                    var tempPickedClass = listValuesWithClass.Where(x => x.valuesList[i] > rowValue.valuesList[i] && x.klasa == pickedClass).ToList();
-                    var tempAnotherClass = listValuesWithClass.Where(x => x.valuesList[i] > rowValue.valuesList[i] && x.klasa != pickedClass).ToList();
-                    if (maxValue < tempPickedClass.Count - tempAnotherClass.Count)
+                    //var tempPickedClass = listValuesWithClass.Where(x => x.valuesList[i] > rowValue.valuesList[i] && x.klasa == pickedClass).ToList();
+                    //var tempAnotherClass = listValuesWithClass.Where(x => x.valuesList[i] > rowValue.valuesList[i] && x.klasa != pickedClass).ToList();
+                    //if (maxValue < tempPickedClass.Count - tempAnotherClass.Count)
+                    //{
+                    //    maxValue = tempPickedClass.Count - tempAnotherClass.Count;
+                    //    rowAndPosition = new Tuple<double, int>(rowValue.valuesList[i], i);
+                    //}
+                    if(prvClass != rowValue.klasa)
                     {
-                        maxValue = tempPickedClass.Count - tempAnotherClass.Count;
-                        rowAndPosition = new Tuple<double, int>(rowValue.valuesList[i], i);
+                        pointPositionValue = rowValue.valuesList[i];
+                        break;
                     }
+                    itemCountInside++;
+                    prvClass = rowValue.klasa;
+                }
+                if(itemsCount < itemCountInside)
+                {
+                    itemsCount = itemCountInside;
+                    rowAndPosition = new Tuple<double, int>(pointPositionValue, i);
                 }
             }
             return rowAndPosition;
@@ -41,10 +56,10 @@ namespace SWD.Services
         {
             
             List<Tuple<double, int>> linesPositions = new List<Tuple<double, int>>();
-            for(int i = 0; i < linesCount; i++)
+            while(listValuesWithClass.Count > 0)
             {
                 if (listValuesWithClass.Count == 0) break;
-                var temp = EDMethodWhereLine(pickedClass, listValuesWithClass);
+                var temp = EDMethodWhereLine(listValuesWithClass,0);
                 if (linesPositions.Contains(temp)) break;
                 linesPositions.Add(temp);
                 listValuesWithClass = listValuesWithClass.Where(x => x.valuesList[temp.Item2] >= temp.Item1).ToList();
