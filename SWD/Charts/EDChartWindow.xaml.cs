@@ -44,7 +44,7 @@ namespace SWD.Charts
             double to = toX;
             foreach (var linePosition in linesPositions)
             {
-                if (linePosition.Item2 == 0)
+                if (linePosition.Item2 == 1)
                 {
                     from = fromX;
                     to = toX;
@@ -54,7 +54,7 @@ namespace SWD.Charts
                     from = fromY;
                     to = toY;
                 }
-                cartesianChart.Series.Add(ChartsService.DrawLine(linePosition.Item1, linePosition.Item2, from, to, 0.1));
+                cartesianChart.Series.Add(ChartsService.DrawLine(linePosition.Item1, linePosition.Item2, from, to, 0.02));
             }
             axisX.Title = "X";
             axisY.Title = "Y";
