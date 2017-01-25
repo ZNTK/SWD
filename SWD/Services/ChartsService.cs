@@ -54,6 +54,30 @@ namespace SWD.Services
                 });
             }
             return seriesCollection;
-        }  
+        }
+
+        public static ScatterSeries DrawLine(double value, int axis, double from, double to, double interval)// 0-X , 1-Y
+        {                       
+            ChartValues<ScatterPoint> values = new ChartValues<ScatterPoint>();
+            double i = from;
+            while (i < to)
+            {
+                if(axis == 0)
+                {
+                    values.Add(new ScatterPoint(value, i, 0.1));
+                }
+                else
+                {
+                    values.Add(new ScatterPoint(i, value, 0.1));
+                }
+                i += interval;             
+            }
+
+            return 
+                new ScatterSeries
+                {
+                    Values = values
+                };
+        }
     }
 }

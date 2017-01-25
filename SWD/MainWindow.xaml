@@ -29,6 +29,7 @@
                 <ColumnDefinition Width="60" />
                 <ColumnDefinition Width="60" />
                 <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="60" />
             </Grid.ColumnDefinitions>
         
         <Button x:Name="buttonImport" Content="Import" Grid.Column="0" Grid.Row="0" Click="buttonImport_Click"/>
@@ -43,6 +44,7 @@
         <Button  x:Name="buttonExportToCsv" Content="Export" Grid.Row="0" Grid.Column="9" Click="buttonExportToCsv_Click" />
         <Button  x:Name="buttonED" Content="ED" Grid.Row="0" Grid.Column="10"  Height="21" VerticalAlignment="Top" Click="buttonED_Click" />
             <TextBox Name="textBoxNazwaKlasy" Grid.Row="0" Grid.Column="11" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="" Height="21"/>
+            <TextBox Name="textKolumnaKlasy" Grid.Row="0" Grid.Column="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="" Height="21"/>
         </Grid>
        
         <DataGrid AutoGenerateColumns="False" Grid.Row="1"

@@ -27,7 +27,7 @@ namespace SWD.Services
                 {
                     var tempPickedClass = listValuesWithClass.Where(x => x.valuesList[i] > rowValue.valuesList[i] && x.klasa == pickedClass).ToList();
                     var tempAnotherClass = listValuesWithClass.Where(x => x.valuesList[i] > rowValue.valuesList[i] && x.klasa != pickedClass).ToList();
-                    if (maxValue <= tempPickedClass.Count - tempAnotherClass.Count)
+                    if (maxValue < tempPickedClass.Count - tempAnotherClass.Count)
                     {
                         maxValue = tempPickedClass.Count - tempAnotherClass.Count;
                         rowAndPosition = new Tuple<double, int>(rowValue.valuesList[i], i);
