@@ -8,6 +8,7 @@ using SWD.Normalization;
 using SWD.KNearestNeighbours;
 using SWD.KMeans;
 using System;
+using System.Collections.Generic;
 
 namespace SWD
 {
@@ -17,6 +18,7 @@ namespace SWD
     public partial class MainWindow : Window
     {
         public Model.Table mainTable;
+        List<Tuple<double, int>> linesPositions;
         public MainWindow()
         {
             InitializeComponent();
@@ -125,8 +127,9 @@ namespace SWD
         private void buttonED_Click(object sender, RoutedEventArgs e)
         {
             EDService edService = new EDService();
-            
-            mainTable = edService.AddEDColumn(mainTable, edService.GetAllLines(10, textBoxNazwaKlasy.Text, DataTableService.GetColumnsFromTableAsValuesWithClassList(mainTable, Convert.ToInt32(textKolumnaKlasy.Text)-1)));
+
+            linesPositions = edService.GetAllLines(10, DataTableService.GetColumnsFromTableAsValuesWithClassList(mainTable, mainTable.Headers.Cells.Count - 1), Convert.ToDouble(textBoxPercent.Text));
+            mainTable = edService.AddEDColumn(mainTable, linesPositions);
             ClearMainDataGrid();
             mainDataGrid = DataTableService.InsertDataToGrid(mainTable, mainDataGrid);
         }
