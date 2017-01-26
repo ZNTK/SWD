@@ -47,10 +47,10 @@ namespace SWD.Services
             {
                 int axis;
                 if (separationResult.LineOrientation == (int)Enums.LineOrientation.Horizontal)
-                    axis = 0;
-                else axis = 1;
+                    axis = 1;
+                else axis = 0;
 
-                seriesCollection.Add(ChartsService.DrawLine(separationResult.Value, axis, 20, 20, 002));
+                seriesCollection.Add(ChartsService.DrawLine(separationResult.Value, axis, -50, 50, 002));
 
 
             }

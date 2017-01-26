@@ -56,6 +56,8 @@ namespace SWD.Services
             double maxValue = GetMaxValue(table, columnIndex);
             double minValue = GetMinValue(table, columnIndex);
 
+            List<double> distinctValues = GetDistinctValues(table, columnIndex);
+
             // for (double i = maxValue; i >= minValue; i = i - 0.000000001)
             for (double i = maxValue; i >= minValue; i = i - 0.01)
             {
@@ -256,6 +258,18 @@ namespace SWD.Services
             result += "]";
 
             return result;
+        }
+
+        private static List<double> GetDistinctValues(Model.Table table, int columnIndex)
+        {
+            List<double> distinctValues = new List<double>();
+
+            foreach (Model.Row row in table.Rows)
+                if (!distinctValues.Contains(double.Parse(row.Cells[columnIndex].Value)))
+                    distinctValues.Add(double.Parse(row.Cells[columnIndex].Value));
+
+            return distinctValues;
+
         }
 
 
