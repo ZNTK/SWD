@@ -18,11 +18,16 @@ namespace SWD.Model
                     Value = cell
                 });
             }
+
+            Vector = new List<byte>();
         }
         public Row()
         {
             Cells = new List<Cell>();
+            Vector = new List<byte>();
         }
         public List<Cell> Cells { get; set; }
+
+        public List<byte> Vector { get; set; }
     }
 }

@@ -156,7 +156,7 @@ namespace SWD.Services
             return leafs;
         }
 
-        private static Model.Table CopyTable(Model.Table table)
+        public static Model.Table CopyTable(Model.Table table)
         {
             Model.Table newTable = new Model.Table();
 

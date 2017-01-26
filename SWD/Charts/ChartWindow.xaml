@@ -31,7 +31,7 @@
             <Label Grid.Row="0" Grid.Column="1">Kolumna2</Label>
             <Label Grid.Row="0" Grid.Column="2">KolumnaKlasy</Label>
 
-            <ComboBox Name="comboBoxFirstColumn" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding columnBinding}"></ComboBox>
+            <ComboBox Name="comboBoxFirstColumn" Grid.Row="1" Grid.Column="0" ItemsSource="{Binding columnBinding}" SelectedItem="{Binding MySelected}"></ComboBox>
             <ComboBox Name="comboBoxSecondColumn" Grid.Row="1" Grid.Column="1" ItemsSource="{Binding columnBinding}"></ComboBox>
             <ComboBox Name="comboBoxClassColumn" Grid.Row="1" Grid.Column="2" ItemsSource="{Binding columnBinding}"></ComboBox>
             

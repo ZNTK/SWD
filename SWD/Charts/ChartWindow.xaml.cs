@@ -37,6 +37,36 @@ namespace SWD.Charts
             DataContext = this;
         }
 
+        public void buttonGenerujED_Click(object sender, RoutedEventArgs e)
+        {
+            //if (comboBoxFirstColumn.SelectedIndex == -1
+            //    || comboBoxSecondColumn.SelectedIndex == -1
+            //    || comboBoxClassColumn.SelectedIndex == -1)
+            //{
+            //    MessageBox.Show("Nie wybrano wartości dla wszystkich kolumn");
+            //}
+
+            //comboBoxFirstColumn.SelectedItem = new KeyValuePair<string, int>("MySelected", 0);
+            //comboBoxSecondColumn.SelectedIndex = 1;
+            //comboBoxClassColumn.SelectedIndex = 2;
+
+            classPointList = DataTableService.GetColumnFromTableAsClassPointList(mainTable, 0, 1, 2);
+
+            cartesianChart.Series = ChartsService.GetNewSeriesCollectionDependOnColumns(classPointList);
+            axisX.Title = "Arg 0";
+            axisY.Title = "Arg 1";
+
+            SeriesCollection seriesCollectionSepRes = ChartsService.GetNewSeriesCollectionFromSeparationResults(mainTable.SeparationResults);
+            foreach(var i in seriesCollectionSepRes)
+                cartesianChart.Series.Add(i);
+
+
+
+
+            //buttonRozwinKlasyfikacje.IsEnabled = true;
+
+        }
+
         private void buttonGeneruj_Click(object sender, RoutedEventArgs e)
         {
             if (comboBoxFirstColumn.SelectedIndex == -1
@@ -56,6 +86,7 @@ namespace SWD.Charts
                 buttonRozwinKlasyfikacje.IsEnabled = true;
             }
         }
+
 
         private void buttonClose_Click(object sender, RoutedEventArgs e)
         {

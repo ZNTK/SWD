@@ -1,6 +1,7 @@
 ﻿using LiveCharts;
 using LiveCharts.Defaults;
 using LiveCharts.Wpf;
+using SWD.ED.Models;
 using SWD.KNearestNeighbours.Models;
 using System;
 using System.Collections.Generic;
@@ -25,16 +26,43 @@ namespace SWD.Services
                 var listaDanejKlasy = classPointList.Where(x => x.klasa == classItem).ToList();
                 foreach(var item in listaDanejKlasy)
                 {
-                    values.Add(new ScatterPoint(item.columnX, item.columnY, 1));
+                    values.Add(new ScatterPoint(item.columnX, item.columnY, 0.2));
                 }
                 seriesCollection.Add(new ScatterSeries
                 {
                     Values = values
                 });
             }
+
+            
+
             return seriesCollection;
         }
-        
+
+        public static SeriesCollection GetNewSeriesCollectionFromSeparationResults(List<SeparationResult> separationResults)
+        {
+            SeriesCollection seriesCollection = new SeriesCollection();
+
+            foreach (SeparationResult separationResult in separationResults)
+            {
+                int axis;
+                if (separationResult.LineOrientation == (int)Enums.LineOrientation.Horizontal)
+                    axis = 0;
+                else axis = 1;
+
+                seriesCollection.Add(ChartsService.DrawLine(separationResult.Value, axis, 20, 20, 002));
+
+
+            }
+
+            
+
+
+
+            return seriesCollection;
+        }
+
+
         public static SeriesCollection GetSeriesCollectionForLineChart(List<ValuesWithClass> valuesWithClass)
         {
             SeriesCollection seriesCollection = new SeriesCollection();
@@ -54,6 +82,31 @@ namespace SWD.Services
                 });
             }
             return seriesCollection;
-        }  
+        }
+
+
+        public static ScatterSeries DrawLine(double value, int axis, double from, double to, double interval)// 0-X , 1-Y
+        {
+            ChartValues<ScatterPoint> values = new ChartValues<ScatterPoint>();
+            double i = from;
+            while (i < to)
+            {
+                if (axis == 0)
+                {
+                    values.Add(new ScatterPoint(value, i, 0.1));
+                }
+                else
+                {
+                    values.Add(new ScatterPoint(i, value, 0.1));
+                }
+                i += interval;
+            }
+
+            return
+                new ScatterSeries
+                {
+                    Values = values
+                };
+        }
     }
 }

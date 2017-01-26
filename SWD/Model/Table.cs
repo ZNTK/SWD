@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SWD.ED.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -52,5 +53,6 @@ namespace SWD.Model
         public List<Row> Rows { get; set; }
         public Row Headers { get; set; }
         public string ResultInfo { get; set; }
+        public List<SeparationResult> SeparationResults { get; set; }
     }
 }

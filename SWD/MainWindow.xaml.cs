@@ -120,7 +120,23 @@ namespace SWD
             mainDataGrid = DataTableService.InsertDataToGrid(mainTable, mainDataGrid);
             MessageBox.Show(mainTable.ResultInfo);
         }
+
+        private void buttonED_Click(object sender, RoutedEventArgs e)
+        {
+            //KMeansWindow kMeansWindow = new KMeansWindow(mainTable);
+            //kMeansWindow.ShowDialog();
+            mainTable = EDService.Separate(mainTable);
+            ClearMainDataGrid();
+            mainDataGrid = DataTableService.InsertDataToGrid(mainTable, mainDataGrid);
+            
+
+            ChartWindow chartsWindow = new ChartWindow(mainTable);
+            chartsWindow.buttonGenerujED_Click(sender, e);
+            chartsWindow.ShowDialog();
+            
         
+
+        }
 
 
 

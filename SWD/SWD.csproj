@@ -78,6 +78,7 @@
     </Compile>
     <Compile Include="Discretization\Models\Section.cs" />
     <Compile Include="ED\Models\ClassCount.cs" />
+    <Compile Include="ED\Models\SeparationResult.cs" />
     <Compile Include="Enums\LineOrientation.cs" />
     <Compile Include="Import\ImportWindow.xaml.cs">
       <DependentUpon>ImportWindow.xaml</DependentUpon>
