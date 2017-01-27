@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SWD"
         mc:Ignorable="d"
-        Title="SWD" Height="350" Width="921.8"
+        Title="SWD" Height="350" Width="1021.8"
         SizeToContent="WidthAndHeight">
         <Grid>
         <Grid.RowDefinitions>
@@ -17,6 +17,7 @@
         </Grid.ColumnDefinitions>
         <Grid>
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60" />
                 <ColumnDefinition Width="60" />
                 <ColumnDefinition Width="60" />
                 <ColumnDefinition Width="60" />
@@ -47,6 +48,7 @@
             <TextBox Name="textBoxPercent" Grid.Row="0" Grid.Column="11" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="0,5" Height="21"/>
             <TextBox Name="textBoxDlugosc" Grid.Row="0" Grid.Column="12" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Text="dlugosc" Height="21"/>
             <Button  x:Name="buttonEDChart" Content="EDChart" Grid.Row="0" Grid.Column="13"  Height="21" VerticalAlignment="Top" Click="buttonEDChart_Click" />
+            <Button  x:Name="buttonCzysc" Content="Czysc" Grid.Row="0" Grid.Column="14" Margin="0.2,0,-0.2,-0.2" Height="21" VerticalAlignment="Top" Click="buttonCzysc_Click" />
         </Grid>
        
         <DataGrid AutoGenerateColumns="False" Grid.Row="1"

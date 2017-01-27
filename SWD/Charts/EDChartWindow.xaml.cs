@@ -54,7 +54,7 @@ namespace SWD.Charts
                     from = fromY;
                     to = toY;
                 }
-                cartesianChart.Series.Add(ChartsService.DrawLine(linePosition.Item1, linePosition.Item2, from, to, 0.02));
+                cartesianChart.Series.Add(ChartsService.DrawLine(linePosition.Item1, linePosition.Item2, from, to, 0.1));
             }
             axisX.Title = "X";
             axisY.Title = "Y";

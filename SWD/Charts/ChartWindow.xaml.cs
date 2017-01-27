@@ -50,7 +50,7 @@ namespace SWD.Charts
                 classPointList = DataTableService.GetColumnFromTableAsClassPointList(mainTable, comboBoxFirstColumn.SelectedIndex, comboBoxSecondColumn.SelectedIndex, comboBoxClassColumn.SelectedIndex);
 
                 cartesianChart.Series = ChartsService.GetNewSeriesCollectionDependOnColumns(classPointList);
-                cartesianChart.Series.Add(ChartsService.DrawLine(5, 0, 0, 13, 0.1));
+                //cartesianChart.Series.Add(ChartsService.DrawLine(5, 0, 0, 13, 0.1));
                 axisX.Title = comboBoxFirstColumn.SelectedItem.ToString();
                 axisY.Title = comboBoxSecondColumn.SelectedItem.ToString();
 

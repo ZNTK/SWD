@@ -140,5 +140,11 @@ namespace SWD
             EDChartWindow chartsWindow = new EDChartWindow(mainTable, linesPositions);
             chartsWindow.ShowDialog();
         }
+
+        private void buttonCzysc_Click(object sender, RoutedEventArgs e)
+        {
+            mainTable = null;
+            ClearMainDataGrid();
+        }
     }
 }
